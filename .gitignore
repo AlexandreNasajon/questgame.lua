@@ -23,12 +23,9 @@ itempool = {
 enemy = {
     bat = {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1},
     spider = {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
-    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
-    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
-    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
-    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
-    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
+    bear = {["name"] = "Bear",["power"] = 14,["life"] = 23, ["gold"] = 7} 
 }
+ -- {["name"] = ,["power"] = ,["life"] = , ["gold"] =
 
 function printstats(p)
     print(Player["name"],"Life: "..p["life"],"Power: "..p["power"],"Gold: "..p["gold"])
@@ -53,7 +50,7 @@ end
 print("What's your name?")
 Player["name"] = io.read()
 print("Hello, "..Player["name"].."!")
-print("Get 100 gold pieces!")
+print("Good luck!")
 while Player["life"]>0 do
     printstats(Player)
     print("Select action:")
@@ -136,6 +133,7 @@ while Player["life"]>0 do
     elseif action == 4 then
         print("You wish to go on a quest! Where would you like to go?")
         print("1 - Forest")
+        
         
         option = tonumber(io.read())
         
