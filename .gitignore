@@ -97,9 +97,7 @@ while Player["life"]>0 do
             else
                 print("Select a valid option!")
             end
-            
-            
-            
+       
         elseif option == 2 then
             print("1 - Bronze Armor  $15")
             print("2 - Silver Armor  $40")
