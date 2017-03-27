@@ -76,6 +76,14 @@ while Player["life"]>0 do
         
         option = tonumber(io.read())
         
+        valid = option>0 and option<5
+        
+        if option ~= valid then
+            print("Select a valid option!")
+        end
+        
+        repeat
+        
         if option == 1 then
             print("1 - Bronze Sword  $5")
             print("2 - Silver Sword  $20")
@@ -83,6 +91,14 @@ while Player["life"]>0 do
             print("4 - Return")
             
             option = tonumber(io.read())
+            
+            valid = option>0 and option<5
+            
+            if option ~= valid then
+                print("Select a valid option!")
+            end
+            
+            repeat
             
             if option == 1 and Player["gold"]>4 then
                 Player["pack"][#"pack"+1] = itempool[1][1] -- talvez problema aqui
@@ -99,9 +115,7 @@ while Player["life"]>0 do
             elseif option == 4 then
             end
             
-            else
-                print("Select a valid option!")
-            --talvez falte um end aqui
+            until valid
        
         elseif option == 2 then
             print("1 - Bronze Armor  $15")
@@ -110,6 +124,14 @@ while Player["life"]>0 do
             print("4 - Return")
             
             option = tonumber(io.read())
+            
+            valid = option>0 and option<5
+            
+            if option ~= valid then
+                print("Select a valid option!")
+            end
+            
+            repeat
             
             if option == 1 and Player["gold"]>14 then
                 Player["pack"][#"pack"+1] = itempool[2][1] -- talvez problema aqui
@@ -123,9 +145,10 @@ while Player["life"]>0 do
                 Player["pack"][#"pack"+1] = itempool[2][3] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 80
                 
-            else
-                print("Select a valid option!")
+            elseif option == 4 then
             end
+                
+            until valid
             
         elseif option == 3 then
             print("We're out of stock!")
@@ -133,9 +156,7 @@ while Player["life"]>0 do
         elseif option == 4 then
         end
             
-        else
-            print("Select a valid option!")
-        --talvez falte um end aqui
+        until valid
         
     elseif action == 4 then
         print("You wish to go on a quest! Where would you like to go?")
