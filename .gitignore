@@ -76,12 +76,16 @@ while Player["life"]>0 do
             option = tonumber(io.read())
             
             if option == 1 and Player["gold"]>4 then
-                Player["pack"][#"pack"+1] = itempool[1][1] -- problema aqui
+                Player["pack"][#"pack"+1] = itempool[1][1] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 5
                 
             elseif option == 2 then
+                Player["pack"][#"pack"+1] = itempool[1][2] -- talvez problema aqui
+                Player["gold"] = Player["gold"] - 20
                 
             elseif option == 3 then
+                Player["pack"][#"pack"+1] = itempool[1][3] -- talvez problema aqui
+                Player["gold"] = Player["gold"] - 50
                 
             else
                 print("Select a valid option!")
@@ -97,10 +101,16 @@ while Player["life"]>0 do
             option = tonumber(io.read())
             
             if option == 1 then
+                Player["pack"][#"pack"+1] = itempool[2][1] -- talvez problema aqui
+                Player["gold"] = Player["gold"] - 15
                 
             elseif option == 2 then
+                Player["pack"][#"pack"+1] = itempool[2][2] -- talvez problema aqui
+                Player["gold"] = Player["gold"] - 40
                 
             elseif option == 3 then
+                Player["pack"][#"pack"+1] = itempool[2][3] -- talvez problema aqui
+                Player["gold"] = Player["gold"] - 80
                 
             else
                 print("Select a valid option!")
