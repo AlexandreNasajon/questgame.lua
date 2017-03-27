@@ -12,7 +12,7 @@ itempool = {
 }
 
 function printstats(p)
-    print("Life: "..p["life"],"Power: "..p["power"],"Gold: "..p["gold"])
+    print(Player["name"],"Life: "..p["life"],"Power: "..p["power"],"Gold: "..p["gold"])
 end
 
 function printpack(p)
@@ -23,37 +23,34 @@ function printequip(p)
     print(p["equipment"])
 end
 
+print("What's your name?")
+Player["name"] = io.read()
+print("Hello, "..Player["name"].."!")
 while Player["life"]>0 do
-    print("What's your name?")
-    Player["name"] = io.read()
-    print("Hello, "..Player["name"].."!")
-    while Player["name"] = io.read() do
-        printstats(Player)
-        print("Select action:")
-        print("1 - Pack")
-        print("2 - Equipment")
-        print("3 - Shop")
-        print("4 - Quest")
+    printstats(Player)
+    print("Select action:")
+    print("1 - Pack")
+    print("2 - Equipment")
+    print("3 - Shop")
+    print("4 - Quest")
         
-        action = tonumber(io.read())
+    action = tonumber(io.read())
         
-        valid = action<5 and action>0
+    valid = action<5 and action>0
         
-        if valid then
+    if valid then
+        
             
             
             
-            
-        else
+    else
             print("Select a valid action!")
-        end
+    end
         
         
         
         
         
-    end    
-    
 end    
 
 if Player["life"]<=0 then
