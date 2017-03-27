@@ -27,22 +27,32 @@ while Player["life"]>0 do
     print("What's your name?")
     Player["name"] = io.read()
     print("Hello, "..Player["name"].."!")
-    printstats(Player)
-    print("Select action:")
-    print("1 - Check ")
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    while Player["name"] = io.read() do
+        printstats(Player)
+        print("Select action:")
+        print("1 - Pack")
+        print("2 - Equipment")
+        print("3 - Shop")
+        print("4 - Quest")
+        
+        action = tonumber(io.read())
+        
+        valid = action<5 and action>0
+        
+        if valid then
+            
+            
+            
+            
+        else
+            print("Select a valid action!")
+        end
+        
+        
+        
+        
+        
+    end    
     
 end    
 
