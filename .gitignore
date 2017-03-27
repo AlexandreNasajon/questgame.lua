@@ -72,6 +72,7 @@ while Player["life"]>0 do
         print("1 - Sword")
         print("2 - Armor")
         print("3 - Other items")
+        print("4 - Return")
         
         option = tonumber(io.read())
         
@@ -79,6 +80,7 @@ while Player["life"]>0 do
             print("1 - Bronze Sword  $5")
             print("2 - Silver Sword  $20")
             print("3 - Golden Sword  $50")
+            print("4 - Return")
             
             option = tonumber(io.read())
             
@@ -86,34 +88,38 @@ while Player["life"]>0 do
                 Player["pack"][#"pack"+1] = itempool[1][1] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 5
                 
-            elseif option == 2 then
+            elseif option == 2 and Player["gold"]>19 then
                 Player["pack"][#"pack"+1] = itempool[1][2] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 20
                 
-            elseif option == 3 then
+            elseif option == 3 and Player["gold"]>49 then
                 Player["pack"][#"pack"+1] = itempool[1][3] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 50
-                
+            
+            elseif option == 4 then
+            end
+            
             else
                 print("Select a valid option!")
-            end
+            --talvez falte um end aqui
        
         elseif option == 2 then
             print("1 - Bronze Armor  $15")
             print("2 - Silver Armor  $40")
             print("3 - Golden Armor  $80")
+            print("4 - Return")
             
             option = tonumber(io.read())
             
-            if option == 1 then
+            if option == 1 and Player["gold"]>14 then
                 Player["pack"][#"pack"+1] = itempool[2][1] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 15
                 
-            elseif option == 2 then
+            elseif option == 2 and Player["gold"]>39 then
                 Player["pack"][#"pack"+1] = itempool[2][2] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 40
                 
-            elseif option == 3 then
+            elseif option == 3 and Player["gold"]>79 then
                 Player["pack"][#"pack"+1] = itempool[2][3] -- talvez problema aqui
                 Player["gold"] = Player["gold"] - 80
                 
@@ -124,9 +130,12 @@ while Player["life"]>0 do
         elseif option == 3 then
             print("We're out of stock!")
             
+        elseif option == 4 then
+        end
+            
         else
             print("Select a valid option!")
-        end
+        --talvez falte um end aqui
         
     elseif action == 4 then
         print("You wish to go on a quest! Where would you like to go?")
