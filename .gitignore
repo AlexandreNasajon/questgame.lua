@@ -134,13 +134,26 @@ while Player["life"]>0 do
         print("You wish to go on a quest! Where would you like to go?")
         print("1 - Forest")
         
-        
         option = tonumber(io.read())
         
         if option == 1 then
             print("You enter the forest.")
+            randomenemy = enemy(math.random(1,#enemy))
+            print("A wild "..randomenemy.."attacked!")
+            print("What do?")
+            print("1 - Fight")
+            print("2 - Run")
             
+            action = tonumber(io.read())
             
+            if action == 1 then
+                
+           
+            
+            end
+        else
+            print("Select a valid quest!")
+        end
         
     else
             print("Select a valid action!")
