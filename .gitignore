@@ -3,7 +3,7 @@ Player = {
     ["life"] = 10,
     ["power"] = 3,
     ["gold"] = 10,
-    ["pack"] = {"potion"},
+    ["pack"] = {},
     ["equipment"] = {"weapon","armor"}
 }
 
@@ -74,7 +74,9 @@ while Player["life"]>0 do
             
             option = tonumber(io.read())
             
-            if option == 1 then
+            if option == 1 and Player["gold"]>4 then
+                Player["pack"][1] = itempool[1][1] -- problema aqui
+                Player["gold"] = Player["gold"] - 5
                 
             elseif option == 2 then
                 
