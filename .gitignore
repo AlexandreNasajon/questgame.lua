@@ -9,15 +9,25 @@ Player = {
 
 itempool = {
     sword = {
-        ["name"] = "Bronze Sword",["power"] = 10,
-        ["name"] = "Silver Sword",["power"] = 25,
-        ["name"] = "Golden Sword",["power"] = 40
+        bronzesword = {["name"] = "Bronze Sword",["power"] = 10},
+        silversword = {["name"] = "Silver Sword",["power"] = 25},
+        goldensword = {["name"] = "Golden Sword",["power"] = 40}
     },
     armor = {
-        ["name"] = "Bronze Armor",["protection"] = 2,
-        ["name"] = "Silver Armor",["protection"] = 5,
-        ["name"] = "Golden Armor",["protection"] = 10
+        bronzearmor = {["name"] = "Bronze Armor",["protection"] = 2},
+        silverarmor = {["name"] = "Silver Armor",["protection"] = 5},
+        goldenarmor = {["name"] = "Golden Armor",["protection"] = 10}
     }
+}
+
+enemy = {
+    bat = {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1},
+    spider = {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
+    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
+    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
+    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
+    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
+    {["name"] = ,["power"] = ,["life"] = , ["gold"] = 
 }
 
 function printstats(p)
@@ -124,6 +134,15 @@ while Player["life"]>0 do
         end
         
     elseif action == 4 then
+        print("You wish to go on a quest! Where would you like to go?")
+        print("1 - Forest")
+        
+        option = tonumber(io.read())
+        
+        if option == 1 then
+            print("You enter the forest.")
+            
+            
         
     else
             print("Select a valid action!")
