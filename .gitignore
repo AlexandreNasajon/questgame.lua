@@ -1,0 +1,55 @@
+Player = {
+    "name",
+    ["life"] = 10,
+    ["power"] = 3,
+    ["gold"] = 10,
+    ["pack"] = {},
+    ["equipment"] = {"weapon","armor"}
+}
+
+itempool = {
+    potion
+}
+
+function printstats(p)
+    print("Life: "..p["life"],"Power: "..p["power"],"Gold: "..p["gold"])
+end
+
+function printpack(p)
+    print(p["pack"])
+end
+
+function printequip(p)
+    print(p["equipment"])
+end
+
+while Player["life"]>0 do
+    print("What's your name?")
+    Player["name"] = io.read()
+    print("Hello, "..Player["name"].."!")
+    printstats(Player)
+    print("Select action:")
+    print("1 - Check ")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+end    
+
+if Player["life"]<=0 then
+    print("You lost! :(")
+end
+
+if Player["gold"]>=100 then
+    print("You won! Congratulations!")
+end
