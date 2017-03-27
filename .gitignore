@@ -138,8 +138,8 @@ while Player["life"]>0 do
         
         if option == 1 then
             print("You enter the forest.")
-            randomenemy = enemy(math.random(1,#enemy))
-            print("A wild "..randomenemy.."attacked!")
+            randomenemy = enemy(math.random(1,2))
+            print("A wild "..randomenemy["name"].." attacked!")
             print("What do?")
             print("1 - Fight")
             print("2 - Run")
@@ -147,8 +147,17 @@ while Player["life"]>0 do
             action = tonumber(io.read())
             
             if action == 1 then
+                randomenemy["life"] = randomenemy["life"] - Player["power"]
+                if randomenemy["life"]<1 then
+                print(randomenemy["name"].." was defeated!")
+                Player["gold"] = Player["gold"] + randomenemy["gold"]
+                print("You found "..randomenemy["gold"]!)
+               
+                else
                 
-           
+                
+                end
+            
             
             end
         else
@@ -160,10 +169,6 @@ while Player["life"]>0 do
     end
 end    
 
-if Player["life"]<=0 then
+if Player["life"]<1 then
     print("You lost! :(")
-end
-
-if Player["gold"]>=100 then
-    print("You won! Congratulations!")
 end
