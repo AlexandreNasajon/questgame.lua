@@ -133,13 +133,14 @@ while Player["life"]>0 do
     elseif action == 4 then
         print("You wish to go on a quest! Where would you like to go?")
         print("1 - Forest")
+        print("2 - Return")
         
         option = tonumber(io.read())
         
         if option == 1 then
             print("You enter the forest.")
             randomenemy = enemy(math.random(1,2))
-            print("A wild "..randomenemy["name"].." attacked!")
+            print("A wild "..randomenemy["name"].." appeared!")
             print("What do?")
             print("1 - Fight")
             print("2 - Run")
@@ -154,12 +155,19 @@ while Player["life"]>0 do
                 print("You found "..randomenemy["gold"]!)
                
                 else
-                
+                print(randomenemy["name"].." attacked!")
+                Player["life"] = Player["life"] - randomenemy["power"]
+                print("Your life is now "..Player["life"]".")
                 
                 end
             
-            
+            elseif action == 2 then
+                print("You coward!")
             end
+        
+        elseif action == 2
+        end
+            
         else
             print("Select a valid quest!")
         end
