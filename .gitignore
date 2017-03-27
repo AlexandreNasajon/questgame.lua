@@ -8,7 +8,16 @@ Player = {
 }
 
 itempool = {
-    potion
+    sword = {
+        ["name"] = "Bronze Sword",["power"] = 10,
+        ["name"] = "Silver Sword",["power"] = 25,
+        ["name"] = "Golden Sword",["power"] = 40
+    },
+    armor = {
+        ["name"] = "Bronze Armor",["protection"] = 2,
+        ["name"] = "Silver Armor",["protection"] = 5,
+        ["name"] = "Golden Armor",["protection"] = 10
+    }
 }
 
 function printstats(p)
@@ -36,21 +45,68 @@ while Player["life"]>0 do
         
     action = tonumber(io.read())
         
-    valid = action<5 and action>0
+    if action == 1 then
+        printpack(Player)
         
-    if valid then
+    elseif action == 2 then
+        printequip(Player)
         
+    elseif action == 3 then
+        print("What do you wish to buy?")
+        print("1 - Sword")
+        print("2 - Armor")
+        print("3 - Other items")
+        
+        option = tonumber(io.read())
+        
+        if option == 1 then
+            print("1 - Bronze Sword  $5")
+            print("2 - Silver Sword  $20")
+            print("3 - Golden Sword  $50")
+            
+            option = tonumber(io.read())
+            
+            if option == 1 then
+                
+            elseif option == 2 then
+                
+            elseif option == 3 then
+                
+            else
+                print("Select a valid option!")
+            end
             
             
             
+        elseif option == 2 then
+            print("1 - Bronze Armor  $15")
+            print("2 - Silver Armor  $40")
+            print("3 - Golden Armor  $80")
+            
+            option = tonumber(io.read())
+            
+            if option == 1 then
+                
+            elseif option == 2 then
+                
+            elseif option == 3 then
+                
+            else
+                print("Select a valid option!")
+            end
+            
+        elseif option == 3 then
+            print("We're out of stock!")
+            
+        else
+            print("Select a valid option!")
+        end
+        
+    elseif action == 4 then
+        
     else
             print("Select a valid action!")
     end
-        
-        
-        
-        
-        
 end    
 
 if Player["life"]<=0 then
