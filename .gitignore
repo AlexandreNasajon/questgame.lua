@@ -23,12 +23,12 @@ itempool = {
 }
 
 enemy = {
-    {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1}
-    --spider = {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
-    --bear = {["name"] = "Bear",["power"] = 14,["life"] = 23, ["gold"] = 5},
-    --serpent = {["name"] = "Serpent",["power"] = 7,["life"] = 3, ["gold"] = 2},
-    --slime = {["name"] = "Slime",["power"] = 3,["life"] = 8, ["gold"] = 2},
-   -- wolf = {["name"] = "Wolf",["power"] = 8,["life"] = 12, ["gold"] = 3},
+    {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1},
+    {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
+    {["name"] = "Bear",["power"] = 14,["life"] = 23, ["gold"] = 5},
+    {["name"] = "Serpent",["power"] = 7,["life"] = 3, ["gold"] = 2},
+    {["name"] = "Slime",["power"] = 3,["life"] = 8, ["gold"] = 2},
+    {["name"] = "Wolf",["power"] = 8,["life"] = 12, ["gold"] = 3},
 }
  -- {["name"] = ,["power"] = ,["life"] = , ["gold"] =
 
@@ -169,28 +169,30 @@ while Player["life"]>0 do
         print("2 - Return")
         
         option = tonumber(io.read())
+    
+        random_enemy = enemy[math.random(1,2)]
         
         if option == 1 then
             print("You enter the forest.")
             
-            print("A wild "..enemy[1]["name"].." appeared!")
+            print("A wild "..random_enemy["name"].." appeared!")
             print("What do?")
             print("1 - Fight")
             print("2 - Run")
             
             action = tonumber(io.read())
-            
+    
             if action == 1 then
-                enemy[1]["life"] = enemy[1]["life"] - Player["power"]
-                if enemy[1]["life"]<1 then
-                print(enemy[1]["name"].." was defeated!")
-                Player["gold"] = Player["gold"] + enemy[1]["gold"]
-                print("You found "..enemy[1]["gold"].."gold piece!")
+                random_enemy["life"] = random_enemy["life"] - Player["power"]
+                if random_enemy["life"]<1 then
+                    print(random_enemy["name"].." was defeated!")
+                    Player["gold"] = Player["gold"] + random_enemy["gold"]
+                    print("You found "..random_enemy["gold"].." gold!")
                
                 else
-                print(enemy[bat]["name"].." attacked!")
-                Player["life"] = Player["life"] - enemy[bat]["power"]
-                print("Your life is now "..Player["life"]".")
+                    print(random_enemy["name"].." attacked!")
+                    Player["life"] = Player["life"] - random_enemy["power"]
+                    print("Your life is now "..Player["life"]..".")
                 
                 end
             
