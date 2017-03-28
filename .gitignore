@@ -1,3 +1,5 @@
+math.randomseed(os.time())
+
 Player = {
     "name",
     ["life"] = 10,
@@ -21,9 +23,9 @@ itempool = {
 }
 
 enemy = {
-    bat = {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1},
-    spider = {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
-    bear = {["name"] = "Bear",["power"] = 14,["life"] = 23, ["gold"] = 7} 
+    {["name"] = "Bat",["power"] = 1,["life"] = 3, ["gold"] = 1},
+    {["name"] = "Spider",["power"] = 2,["life"] = 2, ["gold"] = 1},
+    {["name"] = "Bear",["power"] = 14,["life"] = 23, ["gold"] = 7} 
 }
  -- {["name"] = ,["power"] = ,["life"] = , ["gold"] =
 
@@ -167,8 +169,8 @@ while Player["life"]>0 do
         
         if option == 1 then
             print("You enter the forest.")
-            randomenemy = enemy(math.random(1,2))
-            print("A wild "..randomenemy["name"].." appeared!")
+            
+            print("A wild "..enemy[math.random(1,2)]["name"].." appeared!")
             print("What do?")
             print("1 - Fight")
             print("2 - Run")
@@ -176,15 +178,15 @@ while Player["life"]>0 do
             action = tonumber(io.read())
             
             if action == 1 then
-                randomenemy["life"] = randomenemy["life"] - Player["power"]
-                if randomenemy["life"]<1 then
-                print(randomenemy["name"].." was defeated!")
-                Player["gold"] = Player["gold"] + randomenemy["gold"]
-                print("You found "..randomenemy["gold"]!)
+                enemy[math.random(1,2)]["life"] = enemy[math.random(1,2)]["life"] - Player["power"]
+                if enemy[math.random(1,2)]["life"]<1 then
+                print(enemy[math.random(1,2)]["name"].." was defeated!")
+                Player["gold"] = Player["gold"] + enemy[math.random(1,2)]["gold"]
+                print("You found "..enemy[math.random(1,2)]["gold"].."!")
                
                 else
-                print(randomenemy["name"].." attacked!")
-                Player["life"] = Player["life"] - randomenemy["power"]
+                print(enemy[math.random(1,2)]["name"].." attacked!")
+                Player["life"] = Player["life"] - enemy[math.random(1,2)]["power"]
                 print("Your life is now "..Player["life"]".")
                 
                 end
@@ -193,15 +195,16 @@ while Player["life"]>0 do
                 print("You coward!")
             end
         
-        elseif action == 2
-        end
+        elseif action == 2 then
+            print("You return.")
             
         else
             print("Select a valid quest!")
         end
         
+    
     else
-            print("Select a valid action!")
+        print("Select a valid action!")
     end
 end    
 
