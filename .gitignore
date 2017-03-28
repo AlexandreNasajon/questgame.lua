@@ -6,21 +6,21 @@ Player = {
     ["power"] = 3,
     ["gold"] = 10,
     ["pack"] = {},
-    ["equipment"] = {"weapon","armor"}
+    ["equipment"] = {}
 }
 
-itempool = {
-    sword = {
+
+sword = {
         bronzesword = {["name"] = "Bronze Sword",["power"] = 10},
         silversword = {["name"] = "Silver Sword",["power"] = 25},
         goldensword = {["name"] = "Golden Sword",["power"] = 40}
-    },
-    armor = {
+}
+armor = {
         bronzearmor = {["name"] = "Bronze Armor",["protection"] = 2},
         silverarmor = {["name"] = "Silver Armor",["protection"] = 5},
         goldenarmor = {["name"] = "Golden Armor",["protection"] = 10}
-    }
 }
+
 
 enemy = {
     {["name"] = "Bat",["power"] = 1,["life"] = 4, ["gold"] = 1},
@@ -38,14 +38,14 @@ end
 
 function printpack(p)
     i = 1
-    while i<=#p do
+    while i<=p[#"pack"] do
     print(p["pack"][i])
     i = i+1
     end
 end
 
 function printequip(p)
-     i = 1
+    i = 1
     while i<=#p do
     print(p["equipment"][i])
     i = i+1
@@ -82,8 +82,9 @@ while Player["life"]>0 do
         option = tonumber(io.read())
         
         valid = option>0 and option<5
+        notvalid = option<0 and option>4
         
-        if option ~= valid then
+        if notvalid then
             print("Select a valid option!")
         end
         
@@ -98,24 +99,28 @@ while Player["life"]>0 do
             option = tonumber(io.read())
             
             valid = option>0 and option<5
+            notvalid = option<0 and option >4
             
-            if option ~= valid then
+            if notvalid then
                 print("Select a valid option!")
             end
             
             repeat
             
             if option == 1 and Player["gold"]>4 then
-                Player["pack"][#"pack"+1] = itempool[1][1] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = sword[1] -- problema aqui
                 Player["gold"] = Player["gold"] - 5
+                print("You got a Bronze Sword!")
                 
             elseif option == 2 and Player["gold"]>19 then
-                Player["pack"][#"pack"+1] = itempool[1][2] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = sword[2] -- problema aqui
                 Player["gold"] = Player["gold"] - 20
+                print("You got a Silver Sword!")
                 
             elseif option == 3 and Player["gold"]>49 then
-                Player["pack"][#"pack"+1] = itempool[1][3] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = sword[3] -- problema aqui
                 Player["gold"] = Player["gold"] - 50
+                print("You got a Golden Sword!")
             
             elseif option == 4 then
             end
@@ -139,15 +144,15 @@ while Player["life"]>0 do
             repeat
             
             if option == 1 and Player["gold"]>14 then
-                Player["pack"][#"pack"+1] = itempool[2][1] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = itempool[2][1] -- problema aqui
                 Player["gold"] = Player["gold"] - 15
                 
             elseif option == 2 and Player["gold"]>39 then
-                Player["pack"][#"pack"+1] = itempool[2][2] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = itempool[2][2] -- problema aqui
                 Player["gold"] = Player["gold"] - 40
                 
             elseif option == 3 and Player["gold"]>79 then
-                Player["pack"][#"pack"+1] = itempool[2][3] -- talvez problema aqui
+                Player["pack"][#"pack"+1] = itempool[2][3] -- problema aqui
                 Player["gold"] = Player["gold"] - 80
                 
             elseif option == 4 then
