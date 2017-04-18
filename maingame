@@ -1,0 +1,238 @@
+math.randomseed(os.time())
+
+Player = {
+    "name",
+    ["life"] = 10,
+    ["power"] = 3,
+    ["gold"] = 10,
+    ["pack"] = {},
+    ["equipment"] = {}
+}
+
+pack = {}
+
+sword = {
+        bronzesword = {["name"] = "Bronze Sword",["power"] = 10},
+        silversword = {["name"] = "Silver Sword",["power"] = 25},
+        goldensword = {["name"] = "Golden Sword",["power"] = 40}
+}
+armor = {
+        bronzearmor = {["name"] = "Bronze Armor",["protection"] = 2},
+        silverarmor = {["name"] = "Silver Armor",["protection"] = 5},
+        goldenarmor = {["name"] = "Golden Armor",["protection"] = 10}
+}
+
+
+enemy = {
+    {["name"] = "Bat",["power"] = 1,["life"] = 4, ["gold"] = 1},
+    {["name"] = "Spider",["power"] = 2,["life"] = 4, ["gold"] = 1},
+    {["name"] = "Lil Bear",["power"] = 2,["life"] = 5, ["gold"] = 5},
+    {["name"] = "Serpent",["power"] = 3,["life"] = 4, ["gold"] = 2},
+    {["name"] = "Slime",["power"] = 1,["life"] = 9, ["gold"] = 2},
+    {["name"] = "Lil Wolf",["power"] = 2,["life"] = 7, ["gold"] = 3},
+}
+ -- {["name"] = ,["power"] = ,["life"] = , ["gold"] =
+
+function printstats(p)
+    print(Player["name"],"Life: "..p["life"],"Power: "..p["power"],"Gold: "..p["gold"])
+end
+
+function printpack(p) -- problema aqui
+    i = 1
+    while i<=#p do
+    print(p["pack"][i])
+    i = i+1
+    end
+end
+
+function printequip(p)
+    i = 1
+    while i<=#p do
+    print(p["equipment"][i])
+    i = i+1
+    end
+end
+
+    
+function game()
+    print("What's your name?")
+    Player["name"] = io.read()
+    print("Hello, "..Player["name"].."!")
+    print("Good luck!")
+    while Player["life"]>0 do
+        printstats(Player)
+        print("Select action:")
+        print("1 - Pack")
+        print("2 - Equipment")
+        print("3 - Shop")
+        print("4 - Quest")
+            
+        action = tonumber(io.read())
+            
+        if action == 1 then
+            printpack(Player)
+            
+        elseif action == 2 then
+            printequip(Player)
+            
+        elseif action == 3 then
+            print("What do you wish to buy?")
+            print("1 - Sword")
+            print("2 - Armor")
+            print("3 - Other items")
+            print("4 - Return")
+            
+            option = tonumber(io.read())
+            
+            local valid = option>0 and option<5
+            local notvalid = option<0 or option>4
+            
+            if notvalid then
+                print("Select a valid option!")
+            end
+            
+            while valid do
+                
+                while option == 1 do
+                    print("1 - Bronze Sword  $5")
+                    print("2 - Silver Sword  $20")
+                    print("3 - Golden Sword  $50")
+                    print("4 - Return")
+                    
+                    option = tonumber(io.read())
+                    
+                    valid = option>0 and option<5
+                    notvalid = option<0 or option>4
+                    
+                    if notvalid then
+                        print("Select a valid option!")
+                    end
+                    
+                    while valid do
+                    
+                        if option == 1 and Player["gold"]>4 then
+                            pack[#pack+1] = sword[1] -- problema aqui
+                            Player["gold"] = Player["gold"] - 5
+                            print("You got a Bronze Sword!")
+                        
+                        elseif option == 2 and Player["gold"]>19 then
+                            Player["pack"][#"pack"+1] = sword[2] -- problema aqui
+                            Player["gold"] = Player["gold"] - 20
+                            print("You got a Silver Sword!")
+                        
+                        elseif option == 3 and Player["gold"]>49 then
+                            Player["pack"][#"pack"+1] = sword[3] -- problema aqui
+                            Player["gold"] = Player["gold"] - 50
+                            print("You got a Golden Sword!")
+                    
+                        elseif option == 4 then
+                        break
+                        end
+                    end
+                end --while option == 1 do
+            
+                while option == 2 do
+                    print("1 - Bronze Armor  $15")
+                    print("2 - Silver Armor  $40")
+                    print("3 - Golden Armor  $80")
+                    print("4 - Return")
+                    
+                    option = tonumber(io.read())
+                    
+                    valid = option>0 and option<5
+                    
+                    if option ~= valid then
+                        print("Select a valid option!")
+                    end
+                    
+                    while valid do
+                    
+                        if option == 1 and Player["gold"]>14 then
+                            Player["pack"][#"pack"+1] = itempool[2][1] -- problema aqui
+                            Player["gold"] = Player["gold"] - 15
+                        
+                        elseif option == 2 and Player["gold"]>39 then
+                            Player["pack"][#"pack"+1] = itempool[2][2] -- problema aqui
+                            Player["gold"] = Player["gold"] - 40
+                        
+                        elseif option == 3 and Player["gold"]>79 then
+                            Player["pack"][#"pack"+1] = itempool[2][3] -- problema aqui
+                            Player["gold"] = Player["gold"] - 80
+                        
+                        elseif option == 4 then
+                        break
+                        end
+                    end
+                end--while option == 2 do
+                    
+                if option == 3 then
+                    print("We're out of stock!")
+                    
+                elseif option == 4 then
+                break
+                end
+            end
+            
+        elseif action == 4 then
+            print("You wish to go on a quest! Where would you like to go?")
+            print("1 - Forest")
+            print("2 - Return")
+            
+            option = tonumber(io.read())
+            
+            if option == 1 then
+                print("You enter the forest.")
+                local random_enemy = enemy[math.random(1,5)]
+                print("A wild "..random_enemy["name"].." appeared!")
+                print("Name: "..random_enemy["name"],"Power: "..random_enemy["power"],"Life: "..random_enemy["life"],"Reward: "..random_enemy["gold"].." gold")
+                print("What do?")
+                while random_enemy["life"]>0 do
+                    print("1 - Fight")
+                    print("2 - Run")
+                
+                    action = tonumber(io.read())
+            
+                    if action == 1 then
+                        random_enemy["life"] = random_enemy["life"] - Player["power"]
+                        print("You attacked! "..random_enemy["name"].." lost "..Player["power"].." life!")
+                        print("Name: "..random_enemy["name"],"Power: "..random_enemy["power"],"Life: "..random_enemy["life"],"Reward: "..random_enemy["gold"].." gold")
+                        if random_enemy["life"]<1 then
+                            print(random_enemy["name"].." was defeated!")
+                            Player["gold"] = Player["gold"] + random_enemy["gold"]
+                            print("You found "..random_enemy["gold"].." gold!")
+                        
+                        else
+                            print(random_enemy["name"].." attacked!")
+                            Player["life"] = Player["life"] - random_enemy["power"]
+                            print("Your life is now "..Player["life"]..".")
+                            printstats(Player)
+                    
+                        end
+                
+                    elseif action == 2 then
+                        print("You coward!")
+                    break
+                    end
+                end
+            
+            elseif option == 2 then
+                print("You return.")
+                
+            else
+                print("Select a valid quest!")
+            end
+            
+        
+        else
+            print("Select a valid action!")
+        end
+    end    
+
+    if Player["life"]<1 then
+        print("You lost! :(")
+    end
+end
+    
+os.execute("clear")    
+
+game()
