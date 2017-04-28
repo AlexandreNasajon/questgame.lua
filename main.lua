@@ -1,3 +1,4 @@
 local Screens = require("Screens")
-local printscreen = require("nasa2")
-printscreen(Screens.Shop)
+local Functions = require("Functions")
+local Player = require("Player")
+game()
