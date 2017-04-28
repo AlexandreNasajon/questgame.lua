@@ -19,7 +19,8 @@ Screens.Armors = {Items.bronze_armor,Items.silver_armor,Items.golden_armor}
 Screens.Armors.name = "armors"
 Screens.Armors.question = "Protect yourself!"
 --Tela do Shop
-Screens.Shop = {Screens.Swords,Screens.Armors} 
+Screens.Shop = {Screens.Swords,Screens.Armors}
+Screens.Shop.name = "Shop"
 Screens.Armors.parent = Screens.Shop
 Screens.Swords.parent = Screens.Shop
 Screens.Shop.question = "What do you wish to buy?"  
