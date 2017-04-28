@@ -7,9 +7,10 @@ local Functions = {}
 --BUY---------------
 buy = function(item)
     if Player.gold >= item.cost then
-        Player.Pack = item --coloca o item no pack
-        Player.gold = Player.gold - item.cost --reduz o gold do player
+        Screens.Pack = item --coloca o item no pack/nao tá funfando
+        Player.gold = Player.gold - item.cost --reduz o gold do player/tá funfado
         print("You got a "..item.name.."!")
+        print("You have "..Player.gold.." gold.")
     else
         print("You don't have enough gold!")
     end
@@ -38,7 +39,7 @@ printscreen = function(screen)
       end
       if screen[action].question then 
         return printscreen(screen[action])
-      elseif screen[action] == Screens.Shop.Armors or screen[action] == Screens.Shop.Swords then
+      else
         buy(screen[action])
         return printscreen(screen)
       end
