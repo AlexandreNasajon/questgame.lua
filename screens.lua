@@ -2,20 +2,33 @@ local Items = require("Items")
 
 local Screens = {}
 
-
-Screens.Swords = {Items.bronze_sword,Items.silver_sword} 
+--Tela de Pack
+Screens.Pack = {}
+Screens.Pack.name = "Pack"
+Screens.Pack.question = "Your pack has:"
+--Tela de Quest
+Screens.Quest = {}
+Screens.Quest.name = "Quest"
+Screens.Quest.question = "You wish to go on a quest! Where would you like to go?"
+--Tela de Sword
+Screens.Swords = {Items.bronze_sword,Items.silver_sword,Items.golden_sword} 
 Screens.Swords.name = "swords"
 Screens.Swords.question = "It is a dangerous world..."
-
-
-Screens.Armors = {Items.bronze_armor,Items.silver_armor}   
+--Tela de Armor
+Screens.Armors = {Items.bronze_armor,Items.silver_armor,Items.golden_armor}   
 Screens.Armors.name = "armors"
 Screens.Armors.question = "Protect yourself!"
-
+--Tela do Shop
 Screens.Shop = {Screens.Swords,Screens.Armors} 
 Screens.Armors.parent = Screens.Shop
 Screens.Swords.parent = Screens.Shop
 Screens.Shop.question = "What do you wish to buy?"  
-Screens.Shop.parent = nil
+--Tela Inicial
+Screens.Inicial = {Screens.Shop,Screens.Pack,Screens.Quest}
+Screens.Inicial.question = "Choose your own path."
+Screens.Inicial.parent = nil
+Screens.Pack.parent = Screens.Inicial
+Screens.Quest.parent = Screens.Inicial
+Screens.Shop.parent = Screens.Inicial
 
 return Screens
