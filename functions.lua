@@ -1,3 +1,23 @@
+local Player = require("Player")
+local Screens = require("Screens")
+local Items = require("Items")
+local Enemies = require("Enemies")
+local Functions = {}
+
+--BUY---------------
+buy = function(item)
+    if Player.gold >= item.cost then
+        Player.Pack = item --coloca o item no pack
+        Player.gold = Player.gold - item.cost --reduz o gold do player
+        print("You got a "..item.name.."!")
+    else
+        print("You don't have enough gold!")
+    end
+end
+
+Functions.buy = buy
+
+--PRINTSCREEN----------------------------------------
 printscreen = function(screen)
   print(screen.question)
   print("0 - Return")
@@ -18,8 +38,8 @@ printscreen = function(screen)
       end
       if screen[action].question then 
         return printscreen(screen[action])
-      else
-        print("comprou "..screen[action].name)
+      elseif screen[action] == Screens.Shop.Armors or screen[action] == Screens.Shop.Swords then
+        buy(screen[action])
         return printscreen(screen)
       end
   else
@@ -28,4 +48,17 @@ printscreen = function(screen)
   end
 end
 
-return printscreen
+Functions.printscreen = printscreen
+
+
+--GAME-----------------------------------------------
+game = function()
+    print("What's your name?")
+    Player.name = io.read()
+    print("Hello, "..Player.name.."!")
+    printscreen(Screens.Inicial)
+end
+
+Functions.game = game
+
+return Functions
