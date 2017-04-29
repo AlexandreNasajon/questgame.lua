@@ -5,9 +5,9 @@ local Enemies = require("Enemies")
 local Functions = {}
 
 --BUY---------------
-buy = function(item)
+Functions.buy = function(item)
     if Player.gold >= item.cost then
-        Screens.Pack = item --coloca o item no pack/nao tá funfando
+        Screens.Pack[1+#Screens.Pack] = item --coloca o item no pack/nao tá funfando
         Player.gold = Player.gold - item.cost --reduz o gold do player/tá funfado
         print("You got a "..item.name.."!")
         print("You have "..Player.gold.." gold.")
@@ -16,10 +16,14 @@ buy = function(item)
     end
 end
 
-Functions.buy = buy
+Functions.printstats = function(p)
+    print(p.name,"Life: "..p.life,"Power: "..p.power,"Gold: "..p.gold)
+end
 
 --PRINTSCREEN----------------------------------------
+local printscreen
 printscreen = function(screen)
+  Functions.printstats(Player)
   print(screen.question)
   print("0 - Return")
   for chave, valor in ipairs(screen) do
@@ -27,7 +31,7 @@ printscreen = function(screen)
   end
   local action = tonumber(io.read())
   if action <= #screen and action >= 0 then
-      print("Valid action! ^--^") 
+      print("Valid action! ^--^")
       if action == 0 then
         if screen.parent then
           return printscreen(screen.parent)
@@ -53,13 +57,11 @@ Functions.printscreen = printscreen
 
 
 --GAME-----------------------------------------------
-game = function()
+Functions.game = function()
     print("What's your name?")
     Player.name = io.read()
     print("Hello, "..Player.name.."!")
     printscreen(Screens.Inicial)
 end
-
-Functions.game = game
 
 return Functions
