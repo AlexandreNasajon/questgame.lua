@@ -16,7 +16,17 @@ Functions.buy = function(item)
     end
 end
 
+Functions.view = function(item)
+  print("Name: "..item.name)
+  if item.power then
+  print("Power: "..item.power)
+elseif item.life then
+  print("Life: "..item.life)
+  end
+end
+
 Functions.printstats = function(p)
+
     print(p.name,"Life: "..p.life,"Power: "..p.power,"Gold: "..p.gold)
 end
 
@@ -26,8 +36,15 @@ printscreen = function(screen)
   Functions.printstats(Player)
   print(screen.question)
   print("0 - Return")
-  for chave, valor in ipairs(screen) do
-    print(chave.." - "..valor.name)
+  
+  if screen.parent == Screens.Shop then
+    for chave, valor in ipairs(screen) do
+      print(chave.." - "..valor.name.."     Cost: "..valor.cost)
+    end
+  else
+    for chave, valor in ipairs(screen) do
+      print(chave.." - "..valor.name)
+    end
   end
   local action = tonumber(io.read())
   if action <= #screen and action >= 0 then
@@ -41,11 +58,19 @@ printscreen = function(screen)
         end
         
       end
-      if screen[action].question then 
+      if screen[action].question then --se for uma tela que leva a outro menu
         return printscreen(screen[action])
-      else
-        buy(screen[action])
+        
+      elseif screen[action].question == nil and screen.parent == Screens.Shop then --se for um menu final do shop
+        Functions.buy(screen[action])
         return printscreen(screen)
+        
+      elseif screen[action].question == nil and screen == Screens.Pack then --se for o menu do pack
+        Functions.view(screen[action])
+        return printscreen(screen)
+        
+      else 
+        print("burroooooooooooooo")
       end
   else
       print("Select a valid action!")
